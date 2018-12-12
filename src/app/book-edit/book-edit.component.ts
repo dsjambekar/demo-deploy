@@ -18,6 +18,7 @@ export class BookEditComponent implements OnInit {
   author:string = '';
   publisher:string = '';
   published_year:string = '';
+  matcher:string='';
 
   constructor(private router: Router, private route: ActivatedRoute, private api: ApiService, private formBuilder: FormBuilder) { }
 

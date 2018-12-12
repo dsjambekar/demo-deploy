@@ -17,6 +17,7 @@ export class BookCreateComponent implements OnInit {
   author:string='';
   publisher:string='';
   published_year:string='';
+  matcher:string='';
 
   constructor(private router: Router, private api: ApiService, private formBuilder: FormBuilder) { }
 
