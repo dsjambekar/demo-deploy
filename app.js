@@ -4,10 +4,15 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 
-var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/mean-angular6')
-  .then(() =>  console.log('connection succesful'))
-  .catch((err) => console.error(err));
+// Set up mongoose connection
+const mongoose = require('mongoose');
+let dev_db_url = 'mongodb://root:root123@ds133162.mlab.com:33162/productstutorial';
+const mongoDB = process.env.MONGODB_URI || dev_db_url;
+mongoose.set('useCreateIndex', true)
+mongoose.connect(mongoDB);
+mongoose.Promise = global.Promise;
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 var apiRouter = require('./routes/book');
 
